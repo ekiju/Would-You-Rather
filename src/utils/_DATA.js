@@ -1,6 +1,6 @@
 import pam from '../images/pambeesly.jpg'
 import michael from '../images/michaelscott.png'
-import dwight from '../images/dwightschrute.jpg'
+import dwight from '../images/dwightschrute.jpeg'
 
 let users = {
   pambeesly: {

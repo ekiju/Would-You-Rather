@@ -1,13 +1,17 @@
 import React, { Component } from 'react'
-import Answered from './Answered';
-import Unanswered from './Unanswered';
+
 
 class Details extends Component {
+  // getStatus = () => {
+  //   const { status } = this.props
+  //   console.log('this is status from details', status)
+  // }
   render() {
+    const { status } = this.props
+    console.log('get status ', status)
     return (
       <div>
-        answered: <Answered />
-        unanswered: <Unanswered />
+        Details of the poll (either to vote or to view results)
       </div>
     )
   }

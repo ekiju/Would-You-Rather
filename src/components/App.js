@@ -1,20 +1,48 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux'
+
+import Login from './Login'
+import Dashboard from './Dashboard'
+import Details from './Details'
+import Leaderboard from './Leaderboard'
+import NewQuestion from './NewQuestion'
+// import Error404 from './Error404'
+import Nav from './Nav'
+import LoadingBar from 'react-redux-loading'
+
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { handleInitialData } from '../actions/shared'
 
 class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(handleInitialData())
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Router>
+        <Fragment>
+          <LoadingBar />
+          <div className='container' >
+            <Nav />
+            {this.props.loading === true ? 
+            <Route exact path='/' component={Login} /> : 
+              <div>
+                <Route exact path='/' component={Dashboard} />
+                <Route exact path='/question/:questionid' component={Details} />
+                <Route exact path='/add' component={NewQuestion} />
+                <Route exact path='/leaderboard' component={Leaderboard} />
+                {/* <Route path='/' component={Error404} /> */}
+              </div>
+            }
+          </div>
+        </Fragment>
+      </Router>
     );
   }
 }
-
-export default App;
+function mapStateToProps({ authedUser }) {
+  return {
+    loading: authedUser === null,
+  }
+}
+export default connect(mapStateToProps)(App);

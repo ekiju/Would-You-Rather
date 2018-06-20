@@ -30,14 +30,14 @@ class Dashboard extends Component {
           <button onClick={this.handleToggle}>Toggle Questions</button>
             {showAnswered && (
               answeredQuestions.map((ques) => (
-                <Question id={ques} status='answered' />
+                <Question key={ques} id={ques} status='answered' />
               ))
             )}
         </div>
         <div>
           {!showAnswered && (
             unansweredQuestions.map((ques) => (
-              <Question id={ques} status='unanswered' />
+              <Question key={ques} id={ques} status='unanswered' />
             ))
           )}
         </div>

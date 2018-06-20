@@ -1,19 +1,59 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 
 
 class Details extends Component {
-  // getStatus = () => {
-  //   const { status } = this.props
-  //   console.log('this is status from details', status)
-  // }
+  // get id in the params, fetch the question
+  // see if question's option one or 2 includes the authedUser
+  // if included, get their response. to be optionOne optionTwo or ''.
+  // if optionOne or optionTwo, show poll details but it '' show the page that allows user to vote
+
   render() {
-    const { status } = this.props
-    console.log('get status ', status)
+
+    console.log('props in details', this.props)
+    const { question, response } = this.props
+    const { author, timestamp, optionOne, optionTwo } = question
+    const optionOneVotes = optionOne.votes.length
+    const optionTwoVotes = optionTwo.votes.length
+    const totalVotes = optionOneVotes + optionTwoVotes
+    const optionOnePercentage = 100*parseInt(optionOneVotes/totalVotes)
+    const optionTwoPercentage = 100*parseInt(optionTwoVotes/totalVotes)
+    
     return (
       <div>
-        Details of the poll (either to vote or to view results)
+        {response!=='' && (
+          <div>
+            <h3>Would you rather {optionOne.text} or {optionTwo.text}</h3>
+            <p>{optionOneVotes} voted for option 1</p>
+            <p>{optionTwoVotes} voted for option 2</p>
+            <hr />
+            <p>{optionOnePercentage} percent voted for option 1</p>
+            <p>{optionTwoPercentage} percent voted for option 2</p>
+          </div>
+        )}
       </div>
     )
   }
 }
-export default Details
+
+function mapStateToProps({ authedUser, questions }, props) {
+  const { questionid } = props.match.params
+  const question = questions[questionid]
+  let response = ''
+  if (question.optionOne.votes.includes(authedUser)) {
+    response = 'optionOne'
+  }
+  else if (question.optionTwo.votes.includes(authedUser)) {
+    response = 'optionTwo'
+  }
+  else {
+    response = ''
+  }
+  return {
+    response, 
+    authedUser,
+    question
+  }
+}
+
+export default connect(mapStateToProps)(Details)

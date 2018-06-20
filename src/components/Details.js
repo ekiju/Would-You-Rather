@@ -7,6 +7,13 @@ class Details extends Component {
   // see if question's option one or 2 includes the authedUser
   // if included, get their response. to be optionOne optionTwo or ''.
   // if optionOne or optionTwo, show poll details but it '' show the page that allows user to vote
+  handleOptionOne = (e) => {
+    // modify user's answers,
+    // modify question's votes
+  }
+  handleOptionTwo = (e) => {
+
+  }
 
   render() {
 
@@ -30,6 +37,12 @@ class Details extends Component {
             <p>{optionOnePercentage} percent voted for option 1</p>
             <p>{optionTwoPercentage} percent voted for option 2</p>
             <p>You voted for {response}</p>
+          </div>
+        )}
+        {response==='' && (
+          <div>
+            <button onClick={this.handleOptionOne}>Option One</button>
+            <button onClick={this.handleOptionTwo}>Option Two</button>
           </div>
         )}
       </div>

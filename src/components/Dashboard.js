@@ -22,7 +22,8 @@ class Dashboard extends Component {
   render() {
     const { showAnswered } = this.state
     const { answeredQuestions, unansweredQuestions } = this.props
-    console.log(this.props)
+    console.log('answered qs: ', answeredQuestions)
+    console.log('unanswered qs: ', unansweredQuestions)
     return (
       <div>
         <h1>Dashboard</h1>
@@ -46,24 +47,30 @@ class Dashboard extends Component {
   }
 }
 
-function mapStateToProps({ authedUser, questions, users }) {
-  const currentUser = users[authedUser]
-  const unansweredQuestions = []
-  Object.keys(questions).map((ques) => {
-    if (!currentUser.questions.includes(ques)) {
-      unansweredQuestions.push(ques)
-    }
-  }
-  )
-  // Object.keys(questions).filter((question) => currentUser.questions.includes(question.id))
+function mapStateToProps({ authedUser, questions }) {
+  
+  const answeredQuestions = Object.keys(questions)
+    .filter(i => (
+      questions[i].optionOne.votes.includes(authedUser) ||
+      questions[i].optionTwo.votes.includes(authedUser)
+    ))
+    .sort((a, b) => (
+      questions[b].timestamp - questions[a].timestamp
+    ));
+
+  const unansweredQuestions = Object.keys(questions)
+    .filter(i => (
+      !questions[i].optionOne.votes.includes(authedUser) &&
+      !questions[i].optionTwo.votes.includes(authedUser)
+    ))
+    .sort((a, b) => (
+      questions[b].timestamp - questions[a].timestamp
+    ));
 
   return {
-    authedUser,
-    answeredQuestions: currentUser.questions,
+    answeredQuestions,
     unansweredQuestions,
-    users
-    // answeredQuestions: users.authedUser.questions,
-    // unansweredQuestions: !questions.includes(currentUser.questions)
-  }
+  };
 }
+
 export default connect(mapStateToProps)(Dashboard)

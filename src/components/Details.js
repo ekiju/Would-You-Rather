@@ -29,6 +29,7 @@ class Details extends Component {
             <hr />
             <p>{optionOnePercentage} percent voted for option 1</p>
             <p>{optionTwoPercentage} percent voted for option 2</p>
+            <p>You voted for {response}</p>
           </div>
         )}
       </div>

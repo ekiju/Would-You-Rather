@@ -28,7 +28,7 @@ class Login extends Component {
     console.log('users ', users)
     const { toHome } = this.state
     if (toHome === true) {
-      return <Redirect to='/' component={Dashboard} />
+      return <Redirect to='/' />
     }
     return (
       <div>

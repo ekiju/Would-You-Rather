@@ -35,25 +35,25 @@ export function receiveQuestions(questions) {
   }
 }
 
-function addQuestionAnswer(answer) {
+function addQuestionAnswer({ qid, authedUser, answer }) {
   return {
     type: ADD_QUESTION_ANSWER,
+    qid,
+    authedUser,
     answer
   }
 }
 
-export function handleAddQuestionAnswer(answer, qid) {
-  return (dispatch, getState) => {
-    const { authedUser } = getState()
+export function handleAddQuestionAnswer(info) {
+  return (dispatch) => {
 
     dispatch(showLoading())
+    dispatch(addQuestionAnswer(info))
 
-    return saveQuestionAnswer({
-      authedUser,
-      qid,
-      answer
+    return saveQuestionAnswer(info)
+    .catch((e) => {
+      console.warn('error handling add answer')
     })
-    .then((answer) => dispatch(addQuestionAnswer(answer)))
     .then(() => dispatch(hideLoading()))
   }
 }

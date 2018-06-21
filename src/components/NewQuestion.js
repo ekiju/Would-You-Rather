@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import {connect} from 'react-redux'
 class NewQuestion extends Component {
   render() {
     return (
@@ -9,4 +9,4 @@ class NewQuestion extends Component {
     )
   }
 }
-export default NewQuestion
+export default connect()(NewQuestion)

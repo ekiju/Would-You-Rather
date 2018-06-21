@@ -21,7 +21,7 @@ class Question extends Component {
         )
       default :
         return (
-          <Answered id={id} status={status} />
+          <Unanswered id={id} status={status} />
         ) 
     }
   }

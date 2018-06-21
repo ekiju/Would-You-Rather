@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 import Login from './Login'
 import Dashboard from './Dashboard'
@@ -24,16 +25,14 @@ class App extends Component {
           <LoadingBar />
           <div className='container' >
             <Nav />
-            {this.props.loading === true ? 
-            <Route exact path='/' component={Login} /> : 
-              <div>
-                <Route exact path='/' component={Dashboard} />
-                <Route exact path='/question/:questionid' component={Details} />
-                <Route exact path='/add' component={NewQuestion} />
-                <Route exact path='/leaderboard' component={Leaderboard} />
-                {/* <Route path='/' component={Error404} /> */}
-              </div>
-            }
+            {this.props.loading === true && (
+            <Redirect to='/login' /> )}
+            <Route exact path ='/login' component={Login} />
+            <Route exact path='/' component={Dashboard} />
+            <Route exact path='/question/:questionid' component={Details} />
+            <Route exact path='/add' component={NewQuestion} />
+            <Route exact path='/leaderboard' component={Leaderboard} />
+            
           </div>
         </Fragment>
       </Router>

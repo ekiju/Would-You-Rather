@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestionAnswer } from '../actions/questions'
+import { Link } from 'react-router-dom'
 
 class Details extends Component {
   // get id in the params, fetch the question
@@ -85,6 +86,7 @@ class Details extends Component {
           </form>
         </div>
         )}
+      <Link to='/'>Go Back</Link>
       </div>
     )
   }

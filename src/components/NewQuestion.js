@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
+import { Redirect } from 'react-router-dom'
 
 class NewQuestion extends Component {
   state = {
     optionOneText: '',
-    optionTwoText: ''
+    optionTwoText: '',
+    toHome: false
   }
   handleSubmit = (e) => {
     e.preventDefault();
@@ -13,27 +15,32 @@ class NewQuestion extends Component {
     dispatch(handleAddQuestion(this.state))
     this.setState(() => ({
       optionOneText: '',
-      optionTwoText: ''
+      optionTwoText: '',
+      toHome: true
     }))
   }
-  handleChange = (e) => {
+  handleChangeOne = (e) => {
     let option = e.target.value
-    if (option==='optionOne') {
-      this.setState(() => ({optionOneText:option}))
-    } else {
-      this.setState(() => ({optionTwoText:option}))
-    }
+    this.setState(() => ({optionOneText:option}))
+  }
+  handleChangeTwo = (e) => {
+    let option = e.target.value
+    this.setState(() => ({optionTwoText:option}))
   }
   render() {
+    const { toHome, optionOneText, optionTwoText } = this.state
+    if (toHome === true) {
+      return <Redirect to='/' />
+    }
     return (
       <div>
         <h3>Add a new question</h3>
         <form onSubmit={this.handleSubmit}>
-          <p>Would you rather </p>
-          <input type="text" onChange={this.handleChange} value="optionOne" placeholder="option one" />
+          <p>Would you rather...</p>
+          <input type="text" onChange={this.handleChangeOne} value={optionOneText} placeholder="option one" />
           <p>or</p>
-          <input type="text" onChange={this.handleChange} value="optionTwo" placeholder="option two" />
-          <button type="submit">Create</button>
+          <input type="text" onChange={this.handleChangeTwo} value={optionTwoText} placeholder="option two" />
+          <button type="submit" disabled={optionOneText===''||optionTwoText===''}>Submit</button>
         </form>
       </div>
     )

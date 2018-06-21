@@ -8,6 +8,5 @@ export function formatQuestion(question, author, authedUser) {
     optionTwo,
     name,
     avatar: avatarURL,
-    hasVoted: optionOne.votes.includes(authedUser.id) || optionTwo.votes.includes(authedUser.id)
   }
 }

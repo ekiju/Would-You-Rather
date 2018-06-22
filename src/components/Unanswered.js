@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { formatQuestion } from '../utils/helpers'
 
 class Unanswered extends Component {
+  convertTimestamp = (timestamp) => {
+    const date = new Date(timestamp)
+    const time = date.toLocaleTimeString('en-US')
+    return date.toLocaleDateString() + ' at ' + time.substr(0,5) + time.slice(-2)
+  }
   render() {
     console.log('props from unanswered. author? ', this.props)
     const { question } = this.props
@@ -19,10 +24,13 @@ class Unanswered extends Component {
             width={100}
             className='card-avatar'
           />
-          
+           <div className="post-details">
+            <p>Posted by: {author.name}</p>
+            <p>On: {this.convertTimestamp(timestamp)}</p>
+          </div>
         </div>
-        <p>Would you rather {optionOne.text} or {optionTwo.text}?</p>
-        <Link to={`/question/${id}`} className="question">
+        <p className="question-options">Would you rather <span className="option-text">{optionOne.text}</span> or <span className="option-text">{optionTwo.text}</span>?</p>
+        <Link to={`/question/${id}`} className="question-link">
           Vote Now
         </Link>
       </div>

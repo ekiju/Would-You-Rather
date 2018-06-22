@@ -48,11 +48,11 @@ let questions = {
     timestamp: 1467166872634,
     optionOne: {
       votes: ['pambeesly'],
-      text: 'have horrible short term memory',
+      text: 'be alone with Michael for 3 hours',
     },
     optionTwo: {
       votes: [],
-      text: 'have horrible long term memory'
+      text: 'join the Party Planning Committee'
     }
   },
   "6ni6ok3ym7mf1p33lnez": {
@@ -61,11 +61,11 @@ let questions = {
     timestamp: 1468479767190,
     optionOne: {
       votes: [],
-      text: 'become a superhero',
+      text: 'work for Dunder Mifflin',
     },
     optionTwo: {
       votes: ['dwightschrute', 'pambeesly'],
-      text: 'become a supervillian'
+      text: 'work for Michael Scott Paper Company'
     }
   },
   "am8ehyc8byjqgar0jgpub9": {
@@ -74,11 +74,11 @@ let questions = {
     timestamp: 1488579767190,
     optionOne: {
       votes: [],
-      text: 'be telekinetic',
+      text: 'live with Kevin',
     },
     optionTwo: {
       votes: ['pambeesly'],
-      text: 'be telepathic'
+      text: 'live with Toby'
     }
   },
   "loxhs1bqm25b708cmbf3g": {
@@ -87,11 +87,11 @@ let questions = {
     timestamp: 1482579767190,
     optionOne: {
       votes: [],
-      text: 'be a front-end developer',
+      text: 'hear me sing at Chili\'s',
     },
     optionTwo: {
       votes: ['pambeesly'],
-      text: 'be a back-end developer'
+      text: 'see me dance at Chili\'s'
     }
   },
   "vthrdm985a262al8qx3do": {
@@ -100,11 +100,11 @@ let questions = {
     timestamp: 1489579767190,
     optionOne: {
       votes: ['michaelscott'],
-      text: 'find $50 yourself',
+      text: 'get on a booze cruise',
     },
     optionTwo: {
       votes: ['dwightschrute'],
-      text: 'have your best friend find $500'
+      text: 'host the office olympics'
     }
   },
   "xj352vofupe1dqz9emx13r": {
@@ -113,11 +113,11 @@ let questions = {
     timestamp: 1493579767190,
     optionOne: {
       votes: ['dwightschrute'],
-      text: 'write JavaScript',
+      text: 'do performance reviews all day',
     },
     optionTwo: {
       votes: ['michaelscott'],
-      text: 'write Swift'
+      text: 'talk to Angela all day'
     }
   },
 }

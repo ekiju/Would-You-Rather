@@ -23,8 +23,10 @@ class Dashboard extends Component {
       <div className="dashboard">
         <h1>Poll Questions</h1>
         <div className="filters">
-          <h3 onClick={this.handleShowAnswered}>Answered</h3> |
-          <h3 onClick={this.handleShowUnanswered}>Unanswered</h3>
+          <h3 onClick={this.handleShowUnanswered}
+          style={{fontWeight: !showAnswered ? '700' : '300', color: !showAnswered ? '#f7682f': '#000'}}>Unanswered</h3> |
+          <h3 onClick={this.handleShowAnswered}
+          style={{fontWeight: showAnswered ? '700' : '300', color: showAnswered ? '#f7682f': '#000'}}>Answered</h3>
         </div>
         <div>
             {showAnswered && (

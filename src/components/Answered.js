@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { formatQuestion } from '../utils/helpers'
 
 class Answered extends Component {
@@ -23,11 +23,13 @@ class Answered extends Component {
             width={100}
             className='card-avatar'
           />
-          <p>Posted by: {author.name}</p>
-          <p>On: {this.convertTimestamp(timestamp)}</p>
+          <div className="post-details">
+            <p>Posted by: {author.name}</p>
+            <p>On: {this.convertTimestamp(timestamp)}</p>
+          </div>
         </div>
-        <p>Would you rather {optionOne.text} or {optionTwo.text}?</p>
-        <Link to={`/question/${id}`} className="question">
+        <p className="question-options">Would you rather <span className="option-text">{optionOne.text}</span> or <span className="option-text">{optionTwo.text}</span>?</p>
+        <Link to={`/question/${id}`} className="question-link">
           View Poll Details
         </Link>
       </div>

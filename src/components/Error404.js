@@ -15,8 +15,8 @@ class Error404 extends Component {
       return <Redirect to='/' />
     }
     return (
-      <div>
-        <h1 className='header-center'>404 ERROR: Warning! Page does not exist. You will be redirected in 3 seconds...</h1>
+      <div className="error-page">
+        <h1 className='header-center'>Wooooooaaaa hey there! <br /> This page does not exist. You will be redirected back to the login page in 3 seconds...</h1>
       </div>
     )
   }

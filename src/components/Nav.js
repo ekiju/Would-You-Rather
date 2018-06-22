@@ -13,7 +13,7 @@ class Nav extends Component {
     console.log('nav ', this.props)
     const { authedUser, user } = this.props
     return (
-      <div className="navbar">
+      <div className="navbar" id="topNav">
         <span className="logo">Would You Rather</span>
         <div className="navlinks">
           <NavLink className="navlink-item" to='/' exact>

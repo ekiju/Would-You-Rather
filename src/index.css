@@ -68,6 +68,9 @@ body {
 }
 
 /* nav */
+.icon {
+  display: none;
+}
 .navbar {
   display: flex;
   width: 100%;
@@ -372,6 +375,10 @@ article {
   color: #666;
   font-weight: 300;
 }
+/* 404 page */
+.error-page {
+  padding: 5rem;
+}
 
 
 /* animations */
@@ -448,5 +455,20 @@ article {
   }
   .logo {
     display: none;
+  }
+  .login-page {
+    padding-top: 2rem;
+  }
+  .question-card {
+    width: 80%;
+  }
+  .navlinks {
+    /* margin-top: 50px; */
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+    justify-content: end;
+  }
+  .navbar {
+    height: 6rem;
   }
 }

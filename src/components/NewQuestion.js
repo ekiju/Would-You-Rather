@@ -37,9 +37,9 @@ class NewQuestion extends Component {
         <h3>Add a new question</h3>
         <p>Would you rather...</p>
         <form className="new-question-form" onSubmit={this.handleSubmit}>
-          <input type="text" onChange={this.handleChangeOne} value={optionOneText} placeholder="option one" />
+          <input type="text" onChange={this.handleChangeOne} value={optionOneText} placeholder="Enter option one..." />
           <p>or</p>
-          <input type="text" onChange={this.handleChangeTwo} value={optionTwoText} placeholder="option two" />
+          <input type="text" onChange={this.handleChangeTwo} value={optionTwoText} placeholder="Enter option two..." />
           <button type="submit" disabled={optionOneText===''||optionTwoText===''}>Submit</button>
         </form>
       </div>

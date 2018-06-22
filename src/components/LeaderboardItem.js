@@ -8,10 +8,13 @@ class LeaderboardItem extends Component {
     console.log('props from leaderboarditem ', this.props)
     return (
       <div className="leaderboard-card">
-        Name: {user.name}
-        <img src={user.avatarURL} alt={`Avatar of ${user.name}`} width={100} className='avatar' />
-        Questions Answered: {answers.length}
-        Questions Submitted:{user.questions.length}
+        <img src={user.avatarURL} alt={`Avatar of ${user.name}`} className='leaderboard-avatar' />
+        <div className="leaderboard-user">
+          <h2>{user.name}</h2>
+          <p>Questions Answered: {answers.length}</p>
+          <p>Questions Submitted:{user.questions.length}</p>
+          <h3>Score: {answers.length+user.questions.length}</h3>
+        </div>
       </div>
     )
   }

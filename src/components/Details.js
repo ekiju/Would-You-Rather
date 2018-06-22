@@ -36,45 +36,74 @@ class Details extends Component {
       return "vote"
     }
   }
+  convertTimestamp = (timestamp) => {
+    const date = new Date(timestamp)
+    const time = date.toLocaleTimeString('en-US')
+    return date.toLocaleDateString() + ' at ' + time.substr(0,5) + time.slice(-2)
+  }
   render() {
     console.log('props in details', this.props)
-    const { question } = this.props
-    const { author, timestamp, optionOne, optionTwo } = question
+    const { question, author } = this.props
+    const { avatarURL } = this.props.author
+    const { answer } = this.state
+    const { timestamp, optionOne, optionTwo } = question
     const optionOneVotes = optionOne.votes.length
     const optionTwoVotes = optionTwo.votes.length
     const totalVotes = optionOneVotes + optionTwoVotes
-    const optionOnePercentage = 100*parseInt(optionOneVotes/totalVotes)
-    const optionTwoPercentage = 100*parseInt(optionTwoVotes/totalVotes)
+    const optionOnePercentage = parseInt(100 * (optionOneVotes / totalVotes), 10)
+    const optionTwoPercentage = parseInt(100 - optionOnePercentage, 10);
     
     return (
-      <div>
+      <div className="poll-details">
+        <h1>Would you rather...</h1>
+        <div className='question-poster'>
+          <img
+            src={avatarURL}
+            alt={`Avatar of ${author}`}
+            width={100}
+            className='card-avatar'
+          />
+           <div className="post-details">
+            <p>Posted by: {author.name}</p>
+            <p>On: {this.convertTimestamp(timestamp)}</p>
+          </div>
+        </div>
+        <h3><span className="option-text">{optionOne.text}</span> or <span className="option-text">{optionTwo.text}</span>?</h3>
+
+        {this.chooseVoteOrView() == 'optionOne' || this.chooseVoteOrView() == 'optionTwo' && (
+        <div className="poll-container">
+          <div className="poll-left">
+            <article>
+              <p>{optionOneVotes} vote(s)</p>
+              <h3 className="percent">{optionOnePercentage}%</h3>
+              <p>voted for '{optionOne.text}'</p>
+            </article>
+          </div>
+          <div className="poll-right">
+            <article>
+              <p>{optionTwoVotes} vote(s)</p>
+              <h3 className="percent">{optionTwoPercentage}%</h3>
+              <p>voted for '{optionTwo.text}'</p>
+            </article>
+          </div>
+        </div>
+        )}
         {this.chooseVoteOrView() == 'optionOne' && (
         <div>
-          <p>user voted for option one</p>
-          <h3>Would you rather {optionOne.text} or {optionTwo.text}</h3>
-          <p>{optionOneVotes} voted for option 1</p>
-          <p>{optionTwoVotes} voted for option 2</p>
-          <hr />
-          <p>{optionOnePercentage} percent voted for option 1</p>
-          <p>{optionTwoPercentage} percent voted for option 2</p>
+          <p className="user-answer">You voted for '{optionOne.text}'</p>
         </div>
         )}
         {this.chooseVoteOrView() == 'optionTwo' && (
         <div>
-          <p>user voted for option two</p>
-          <h3>Would you rather {optionOne.text} or {optionTwo.text}</h3>
-          <p>{optionOneVotes} voted for option 1</p>
-          <p>{optionTwoVotes} voted for option 2</p>
-          <hr />
-          <p>{optionOnePercentage} percent voted for option 1</p>
-          <p>{optionTwoPercentage} percent voted for option 2</p>
+          <p className="user-answer">You voted for '{optionTwo.text}'</p>
         </div>
         )}
+
         {this.chooseVoteOrView() == 'vote' && (
         <div>
-          <p>Would you rather {optionOne.text} or {optionTwo.text}</p>
           <form
-            onSubmit={this.handleQuestionAnswer}>
+            onSubmit={this.handleQuestionAnswer}
+            className="answer-select-form">
             <select
               onChange={this.handleChange}
               defaultValue='Select an answer'>
@@ -82,17 +111,18 @@ class Details extends Component {
               <option value='optionOne'>{question.optionOne.text}</option>
               <option value='optionTwo'>{question.optionTwo.text}</option>
             </select>
-            <input type="submit" value="Submit" />
+            <button type="submit" value="Submit" disabled={answer===''}>Submit</button>
           </form>
         </div>
         )}
-      <Link to='/'>Go Back</Link>
+      <Link to='/'>
+        <i class="fa fa-arrow-left" aria-hidden="true"></i></Link>
       </div>
     )
   }
 }
 
-function mapStateToProps({ authedUser, questions }, props) {
+function mapStateToProps({ authedUser, questions, users }, props) {
   const { questionid } = props.match.params
   const question = questions[questionid]
   
@@ -100,7 +130,7 @@ function mapStateToProps({ authedUser, questions }, props) {
     authedUser,
     question,
     qid: questionid,
-    author: questionid ? question.author : null,
+    author: questionid ? users[question.author] : null,
   }
 }
 

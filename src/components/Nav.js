@@ -1,40 +1,50 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { handleLogoutUser } from '../actions/authedUser'
 
 class Nav extends Component {
+  handleLogout = (e) => {
+    const { dispatch } = this.props
+    e.preventDefault()
+    dispatch(handleLogoutUser())
+  }
   render() {
     console.log('nav ', this.props)
-    const { authedUser } = this.props
+    const { authedUser, user } = this.props
     return (
-      <ul>
-        { authedUser && (
-          <li>
-            Welcome, {authedUser}
-          </li>
-        )}
-        <li>
-          <NavLink to='/' exact activeClassName='active'>
+      <div className="navbar">
+        <span className="logo">Would You Rather</span>
+        <div className="navlinks">
+          <NavLink className="navlink-item" to='/' exact>
             Home
           </NavLink>
-        </li>
-        <li>
-          <NavLink to='/add' exact activeClassName='active'>
+          <NavLink className="navlink-item" to='/add' exact>
             New Question
           </NavLink>
-        </li>
-        <li>
-          <NavLink to='/leaderboard' exact activeClassName='active'>
+          <NavLink className="navlink-item" to='/leaderboard' exact>
             Leaderboard
           </NavLink>
-        </li>
-      </ul>
+
+          { authedUser && (
+            <div className="nav-logged-in">
+              <p>Welcome, {authedUser}</p>
+              <img className="nav-avatar" src={user.avatarURL} />
+            </div>
+          )}
+          <button onClick={this.handleLogout}>
+            Logout
+          </button>
+        </div>
+      </div>
     )
   }
 }
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser, users }) {
+  const user = users[authedUser]
   return {
-    authedUser
+    authedUser,
+    user
   }
 }
 export default connect(mapStateToProps)(Nav)

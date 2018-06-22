@@ -6,6 +6,7 @@ let users = {
   pambeesly: {
     id: 'pambeesly',
     name: 'Pam Beesly',
+    nickname: 'Mrs.Halpert',
     avatarURL: pam,
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
@@ -18,6 +19,7 @@ let users = {
   michaelscott: {
     id: 'michaelscott',
     name: 'Michael Scott',
+    nickname: 'Best Boss',
     avatarURL: michael,
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
@@ -28,6 +30,7 @@ let users = {
   dwightschrute: {
     id: 'dwightschrute',
     name: 'Dwight Schrute',
+    nickname: 'Monkey',
     avatarURL: dwight,
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',

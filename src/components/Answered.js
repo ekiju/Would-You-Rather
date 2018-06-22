@@ -10,21 +10,19 @@ class Answered extends Component {
     const { author, timestamp, optionOne, optionTwo } = question
     const { avatarURL } = this.props.author
     return (
-      <div>
-        <div className='question-card'>
+      <div className="question-card">
+        <div className='question-poster'>
           Posted by: <img
             src={avatarURL}
             alt={`Avatar of ${author}`}
             width={100}
-            className='avatar'
+            className='card-avatar'
           />
-          <div>
-            Would you rather {optionOne.text} or {optionTwo.text}?
-          </div>
-          <Link to={`/question/${id}`} className="question">
-            View Poll Details
-          </Link>
         </div>
+        <p>Would you rather {optionOne.text} or {optionTwo.text}?</p>
+        <Link to={`/question/${id}`} className="question">
+          View Poll Details
+        </Link>
       </div>
     )
   }

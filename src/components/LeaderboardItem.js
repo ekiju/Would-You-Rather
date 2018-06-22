@@ -12,7 +12,6 @@ class LeaderboardItem extends Component {
         <img src={user.avatarURL} alt={`Avatar of ${user.name}`} width={100} className='avatar' />
         Questions Answered: {answers.length}
         Questions Submitted:{user.questions.length}
-        <hr />
       </div>
     )
   }

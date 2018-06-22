@@ -1,48 +1,21 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
-import Dashboard from './Dashboard'
-import { handleLoginUser } from '../actions/authedUser'
+import User from './User'
 
 class Login extends Component {
-  state = {
-    user: '',
-    toHome: false
-  }
-  handleChange = (e) => {
-    const user = e.target.value
-    this.setState(() => ({user}))
-  }
-  handleLogin = (e) => {
-    const { user } = this.state
-    const { dispatch } = this.props
-    dispatch(handleLoginUser(user))
-
-    this.setState(() => ({
-      user: '',
-      toHome: user!=='' 
-    }))
-  }
   render() {
-    const { users } = this.props
-    console.log('users ', users)
-    const { toHome } = this.state
-    if (toHome === true) {
-      return <Redirect to='/' />
-    }
+    const { uids } = this.props
     return (
-      <div>
-        <h1>Login</h1>
+      <div className="login-page">
         <div className="login-form">
-          <select onChange={this.handleChange} defaultValue=''>
-            <option disabled value=''>Select User...</option>
-            {Object.keys(users).map((user) => (
-              <option key={users[user].id} value={users[user].id}>
-                {users[user].name}
-              </option>
+          <h1 className="login-header">Who are you?</h1>
+          <ul>
+            {uids.map((uid) => (
+              <li key={uid}>
+                <User uid={uid}/>
+              </li>
             ))}
-          </select>
-          <button onClick={this.handleLogin}>Login</button>
+          </ul>
         </div>
       </div>
     )
@@ -50,7 +23,7 @@ class Login extends Component {
 }
 function mapStateToProps({ users }) {
   return {
-    users
+    uids: Object.keys(users)
   }
 }
 export default connect(mapStateToProps)(Login)

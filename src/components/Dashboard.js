@@ -22,13 +22,14 @@ class Dashboard extends Component {
   render() {
     const { showAnswered } = this.state
     const { answeredQuestions, unansweredQuestions } = this.props
-    console.log('answered qs: ', answeredQuestions)
-    console.log('unanswered qs: ', unansweredQuestions)
     return (
-      <div>
-        <h1>Dashboard</h1>
+      <div className="dashboard">
+        <h1>Poll Questions</h1>
+        <div className="filters">
+          <h3 onClick={this.handleToggle}>Answered</h3> |
+          <h3 onClick={this.handleToggle}>Unanswered</h3>
+        </div>
         <div>
-          <button onClick={this.handleToggle}>Toggle Questions</button>
             {showAnswered && (
               answeredQuestions.map((ques) => (
                 <Question key={ques} id={ques} status='answered' />

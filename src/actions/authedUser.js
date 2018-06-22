@@ -1,5 +1,3 @@
-import { showLoading, hideLoading } from 'react-redux-loading'
-
 export const SET_AUTHED_USER = 'SET_AUTHED_USER'
 export const LOG_OUT = 'LOG_OUT'
 

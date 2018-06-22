@@ -33,9 +33,9 @@ class NewQuestion extends Component {
       return <Redirect to='/' />
     }
     return (
-      <div>
+      <div className="new-question">
         <h3>Add a new question</h3>
-        <form onSubmit={this.handleSubmit}>
+        <form className="new-question-form" onSubmit={this.handleSubmit}>
           <p>Would you rather...</p>
           <input type="text" onChange={this.handleChangeOne} value={optionOneText} placeholder="option one" />
           <p>or</p>

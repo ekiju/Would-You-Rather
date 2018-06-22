@@ -6,25 +6,24 @@ import { formatQuestion } from '../utils/helpers'
 class Unanswered extends Component {
   render() {
     const { question } = this.props
-    const { id, status } = this.props
-    const { author, timestamp, optionOne, optionTwo } = question
+    const { id, status, author} = this.props
+    const { timestamp, optionOne, optionTwo } = question
     const { avatarURL } = this.props.author
     return (
-      <div>
-        <div className='question-card'>
-          Posted by: <img
+      <div className='question-card'>
+        <div className='question-poster'>
+          <img
             src={avatarURL}
             alt={`Avatar of ${author}`}
             width={100}
-            className='avatar'
+            className='card-avatar'
           />
-          <div>
-            Would you rather {optionOne.text} or {optionTwo.text}?
-          </div>
-          <Link to={`/question/${id}`} className="question">
-            Vote Now
-          </Link>
+          <p>Posted by: {author}</p>
         </div>
+        <p>Would you rather {optionOne.text} or {optionTwo.text}?</p>
+        <Link to={`/question/${id}`} className="question">
+          Vote Now
+        </Link>
       </div>
     )
   }

@@ -8,16 +8,13 @@ class Dashboard extends Component {
   state={
     showAnswered:false,
   }
-  handleToggle = (e) => {
-    if (this.state.showAnswered) {
-      this.setState(() => ({
-        showAnswered: false,
-      }))
-    } else {
-      this.setState(() => ({
-        showAnswered: true,
-      }))
-    }
+  handleShowAnswered = (e) => {
+    e.preventDefault()
+    this.setState({showAnswered: true})
+  }
+  handleShowUnanswered = (e) => {
+    e.preventDefault()
+    this.setState({showAnswered: false})
   }
   render() {
     const { showAnswered } = this.state
@@ -26,8 +23,8 @@ class Dashboard extends Component {
       <div className="dashboard">
         <h1>Poll Questions</h1>
         <div className="filters">
-          <h3 onClick={this.handleToggle}>Answered</h3> |
-          <h3 onClick={this.handleToggle}>Unanswered</h3>
+          <h3 onClick={this.handleShowAnswered}>Answered</h3> |
+          <h3 onClick={this.handleShowUnanswered}>Unanswered</h3>
         </div>
         <div>
             {showAnswered && (

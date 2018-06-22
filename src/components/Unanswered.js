@@ -5,6 +5,7 @@ import { formatQuestion } from '../utils/helpers'
 
 class Unanswered extends Component {
   render() {
+    console.log('props from unanswered. author? ', this.props)
     const { question } = this.props
     const { id, status, author} = this.props
     const { timestamp, optionOne, optionTwo } = question
@@ -18,7 +19,7 @@ class Unanswered extends Component {
             width={100}
             className='card-avatar'
           />
-          <p>Posted by: {author}</p>
+          
         </div>
         <p>Would you rather {optionOne.text} or {optionTwo.text}?</p>
         <Link to={`/question/${id}`} className="question">

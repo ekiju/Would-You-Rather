@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 
 class NewQuestion extends Component {
   state = {
@@ -42,6 +42,8 @@ class NewQuestion extends Component {
           <input type="text" onChange={this.handleChangeTwo} value={optionTwoText} placeholder="Enter option two..." />
           <button type="submit" disabled={optionOneText===''||optionTwoText===''}>Submit</button>
         </form>
+        <Link to='/'>
+        <i class="fa fa-arrow-left" aria-hidden="true"></i></Link>
       </div>
     )
   }

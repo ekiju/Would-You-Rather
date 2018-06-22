@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
+import { Link } from 'react-router-dom'
 // import Answered from './Answered';
 // import Unanswered from './Unanswered';
 
@@ -19,6 +20,7 @@ class Dashboard extends Component {
   render() {
     const { showAnswered } = this.state
     const { answeredQuestions, unansweredQuestions } = this.props
+    console.log('answered q', answeredQuestions)
     return (
       <div className="dashboard">
         <h1>Poll Questions</h1>
@@ -42,6 +44,12 @@ class Dashboard extends Component {
             ))
           )}
         </div>
+        {unansweredQuestions.length === 0 && (
+          <div>
+            <h3 className="empty-list">You have answered all the questions. Way to go!</h3>
+            <h4>Create a new question <Link to="/add">here</Link>!</h4>
+          </div>
+        )}
       </div>
     )
   }

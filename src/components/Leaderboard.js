@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import LeaderboardItem from './LeaderboardItem'
+import { Link } from 'react-router-dom'
 
 class Leaderboard extends Component {
   render() {
@@ -16,6 +17,8 @@ class Leaderboard extends Component {
             </li>
           ))}
         </ul>
+        <Link to='/'>
+        <i className="fa fa-arrow-left" aria-hidden="true"></i></Link>
       </div>
     )
   }

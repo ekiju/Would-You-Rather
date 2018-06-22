@@ -4,10 +4,6 @@ import { handleAddQuestionAnswer } from '../actions/questions'
 import { Link } from 'react-router-dom'
 
 class Details extends Component {
-  // get id in the params, fetch the question
-  // see if question's option one or 2 includes the authedUser
-  // if included, get their response. to be optionOne optionTwo or ''.
-  // if optionOne or optionTwo, show poll details but it '' show the page that allows user to vote
   state = {
     answer: ''
   }
@@ -42,7 +38,6 @@ class Details extends Component {
     return date.toLocaleDateString() + ' at ' + time.substr(0,5) + time.slice(-2)
   }
   render() {
-    console.log('props in details', this.props)
     const { question, author } = this.props
     const { avatarURL } = this.props.author
     const { answer } = this.state
@@ -116,7 +111,7 @@ class Details extends Component {
         </div>
         )}
       <Link to='/'>
-        <i class="fa fa-arrow-left" aria-hidden="true"></i></Link>
+        <i className="fa fa-arrow-left" aria-hidden="true"></i></Link>
       </div>
     )
   }

@@ -9,7 +9,6 @@ class Error404 extends Component {
     setInterval(() => this.setState({ toHome: true }), 3000)
   }
   render() {
-    console.log('did i get here')
     const { toHome } = this.state
     if (toHome===true) {
       return <Redirect to='/' />

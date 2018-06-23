@@ -10,7 +10,6 @@ class Nav extends Component {
     dispatch(handleLogoutUser())
   }
   render() {
-    console.log('nav ', this.props)
     const { authedUser, user } = this.props
     return (
       <div className="navbar" id="topNav">

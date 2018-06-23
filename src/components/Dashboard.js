@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Question from './Question'
 import { Link } from 'react-router-dom'
-// import Answered from './Answered';
-// import Unanswered from './Unanswered';
 
 class Dashboard extends Component {
   state={

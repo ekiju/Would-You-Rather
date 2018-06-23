@@ -10,9 +10,8 @@ class Unanswered extends Component {
     return date.toLocaleDateString() + ' at ' + time.substr(0,5) + time.slice(-2)
   }
   render() {
-    console.log('props from unanswered. author? ', this.props)
     const { question } = this.props
-    const { id, status, author} = this.props
+    const { id, author} = this.props
     const { timestamp, optionOne, optionTwo } = question
     const { avatarURL } = this.props.author
     return (

@@ -5,7 +5,6 @@ class LeaderboardItem extends Component {
   render() {
     const {user} = this.props
     const answers = Object.values(user.answers)
-    console.log('props from leaderboarditem ', this.props)
     return (
       <div className="leaderboard-card">
         <img src={user.avatarURL} alt={`Avatar of ${user.name}`} className='leaderboard-avatar' />

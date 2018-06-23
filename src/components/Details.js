@@ -9,7 +9,6 @@ class Details extends Component {
   }
   handleQuestionAnswer = (e) => {
     e.preventDefault()
-    console.log('this is props now after submit', this.props)
     const { dispatch, question, qid, authedUser } = this.props
     const {answer} = this.state
     dispatch(handleAddQuestionAnswer({

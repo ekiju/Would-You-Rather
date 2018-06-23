@@ -11,15 +11,15 @@ class Question extends Component {
     switch(status) {
       case 'answered':
         return (
-          <Answered id={id} status={status} />
+          <Answered id={id} />
         )
       case 'unanswered':
         return (
-          <Unanswered id={id} status={status} />
+          <Unanswered id={id} />
         )
       default :
         return (
-          <Unanswered id={id} status={status} />
+          <Unanswered id={id} />
         ) 
     }
   }
@@ -28,10 +28,8 @@ class Question extends Component {
     const { question } = this.props
     if (question == null) {
       return <p>This question doesn't exist!</p> 
-      // or take to 404 page
     }
     
-
     return (
       <div>
         {this.questionStatus()}

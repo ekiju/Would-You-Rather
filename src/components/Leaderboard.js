@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom'
 class Leaderboard extends Component {
   render() {
     const { users } = this.props
-    console.log('this is props from leaderboard (users) ', users)
     return (
       <div className="leaderboard">
         <h1>Leaderboard</h1>

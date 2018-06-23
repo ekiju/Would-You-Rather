@@ -11,7 +11,7 @@ class Answered extends Component {
   }
   render() {
     const { question } = this.props
-    const { id, status, author } = this.props
+    const { id, author } = this.props
     const { timestamp, optionOne, optionTwo } = question
     const { avatarURL } = this.props.author
     return (

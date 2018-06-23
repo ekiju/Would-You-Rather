@@ -234,8 +234,12 @@ body {
 .new-question-form > input {
   padding: 0.7rem 1rem;
   margin-top: 1rem;
+  width: 50%;
+  align-self: center;
 }
 .new-question-form > button {
+  width: 50%;
+  align-self: center;
   cursor: pointer;
   display: flex;
   justify-content: center;

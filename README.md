@@ -8,7 +8,7 @@ The `_DATA.js` file represents a fake database and methods that let you access t
 
 ## Live Demo
 ```
-http://would-you-ekiju.surge.sh/
+http://kijulee.com/Would-You-Rather/
 ```
 
 ## Getting Started

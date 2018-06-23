@@ -16,7 +16,7 @@ class Error404 extends Component {
     }
     return (
       <div className="error-page">
-        <h1 className='header-center'>Wooooooaaaa hey there! <br /> This page does not exist. You will be redirected back to the login page in 3 seconds...</h1>
+        <h1 className='header-center'>You will be redirected back to main page in 3 seconds...</h1>
       </div>
     )
   }

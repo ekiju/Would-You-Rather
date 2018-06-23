@@ -6,6 +6,11 @@ The `_DATA.js` file represents a fake database and methods that let you access t
 
 [Create React App](https://github.com/facebook/create-react-app) was used to bootstrap the project.
 
+## Live Demo
+```
+http://would-you-ekiju.surge.sh/
+```
+
 ## Getting Started
 
 Follow the instructions below to get a copy of the project running on your local machine.

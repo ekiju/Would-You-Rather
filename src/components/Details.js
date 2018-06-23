@@ -65,7 +65,7 @@ class Details extends Component {
         </div>
         <h3><span className="option-text">{optionOne.text}</span> or <span className="option-text">{optionTwo.text}</span>?</h3>
 
-        {this.chooseVoteOrView() == 'optionOne' || this.chooseVoteOrView() == 'optionTwo' && (
+        {this.chooseVoteOrView() === 'optionOne' || this.chooseVoteOrView() === 'optionTwo' && (
         <div className="poll-container">
           <div className="poll-left">
             <article>
@@ -83,18 +83,18 @@ class Details extends Component {
           </div>
         </div>
         )}
-        {this.chooseVoteOrView() == 'optionOne' && (
+        {this.chooseVoteOrView() === 'optionOne' && (
         <div>
           <p className="user-answer">You voted for '{optionOne.text}'</p>
         </div>
         )}
-        {this.chooseVoteOrView() == 'optionTwo' && (
+        {this.chooseVoteOrView() === 'optionTwo' && (
         <div>
           <p className="user-answer">You voted for '{optionTwo.text}'</p>
         </div>
         )}
 
-        {this.chooseVoteOrView() == 'vote' && (
+        {this.chooseVoteOrView() === 'vote' && (
         <div>
           <form
             onSubmit={this.handleQuestionAnswer}

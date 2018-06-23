@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
 import PrivateRoute from './PrivateRoute'
 import Login from './Login'
 import Dashboard from './Dashboard'
@@ -24,7 +23,7 @@ class App extends Component {
         <Fragment>
           <LoadingBar />
           <div className='container' >
-          {this.props.loading == false && (
+          {this.props.loading === false && (
             <Nav />
           )}
             <Switch>
